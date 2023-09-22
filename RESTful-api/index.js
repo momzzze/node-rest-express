@@ -1,9 +1,15 @@
 import express from "express";
 import Joi from "joi";
+import logger from "./logger.js";
+import authenticator from "./authenticator.js";
 
 const app = express();
 
 app.use(express.json()); //return function req.body
+app.use(logger);
+app.use(authenticator);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 const courses = [
     { id: 1, name: 'course1' },
@@ -72,8 +78,8 @@ app.delete('/api/courses/:id', (req, res) => {
 
 
 
-app.get('/api/post/:year/:month', (req, res) => {    
-    res.send(req.query); 
+app.get('/api/post/:year/:month', (req, res) => {
+    res.send(req.query);
 });
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server running on port ${port}...`));
