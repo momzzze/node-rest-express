@@ -1,4 +1,6 @@
 import express from "express";
+import helmet from "helmet";
+import morgan from "morgan";
 import Joi from "joi";
 import logger from "./logger.js";
 import authenticator from "./authenticator.js";
@@ -10,7 +12,8 @@ app.use(logger);
 app.use(authenticator);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-
+app.use(helmet());
+app.use(morgan('tiny'));
 const courses = [
     { id: 1, name: 'course1' },
     { id: 2, name: 'course2' },
