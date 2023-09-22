@@ -6,8 +6,11 @@ import debug from "debug";
 import Joi from "joi";
 import logger from "./logger.js";
 import authenticator from "./authenticator.js";
-
 const app = express();
+
+app.set('view engine', 'pug');
+app.set('views', './views'); //default
+
 const debugging = debug('app:startup');
 
 app.use(express.json()); //return function req.body
@@ -38,7 +41,7 @@ const courses = [
 ]
 
 app.get("/", (req, res) => {
-    res.send("Hello World");
+    res.render('index', { title: 'My Express App', message: 'Hello' });
 });
 
 app.get('/api/courses', (req, res) => {
