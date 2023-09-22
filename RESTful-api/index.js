@@ -2,7 +2,8 @@ import express from "express";
 import Joi from "joi";
 
 const app = express();
-app.use(express.json());
+
+app.use(express.json()); //return function req.body
 
 const courses = [
     { id: 1, name: 'course1' },
@@ -10,8 +11,6 @@ const courses = [
     { id: 3, name: 'course3' },
 ]
 
-// take 2 arguments: URL and callback function
-// callback function takes 2 arguments: req and res
 app.get("/", (req, res) => {
     res.send("Hello World");
 });
@@ -73,9 +72,8 @@ app.delete('/api/courses/:id', (req, res) => {
 
 
 
-app.get('/api/post/:year/:month', (req, res) => {
-    // res.send(req.params);  // /post/1992/5  will give me  {"year":"1992","month":"5"}
-    res.send(req.query);  // /post/1992/5?sortBy=name  will give me  {"sortBy":"name"}
+app.get('/api/post/:year/:month', (req, res) => {    
+    res.send(req.query); 
 });
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server running on port ${port}...`));
@@ -85,6 +83,5 @@ function validateCourse(course) {
     const schema = Joi.object({
         name: Joi.string().min(3).required()
     });
-    console.log(schema.validate(course));
     return schema.validate(course);
 }
