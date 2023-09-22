@@ -1,11 +1,14 @@
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
+import config from "config";
+import debug from "debug";
 import Joi from "joi";
 import logger from "./logger.js";
 import authenticator from "./authenticator.js";
 
 const app = express();
+const debugging = debug('app:startup');
 
 app.use(express.json()); //return function req.body
 app.use(logger);
@@ -13,7 +16,21 @@ app.use(authenticator);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(helmet());
-app.use(morgan('tiny'));
+
+//Configuration
+console.log('Application Name: ' + config.get('name'));
+console.log('Mail server: ' + config.get('mail.host'));
+console.log('Mail password: ' + config.get('mail.password'));
+
+
+
+if(app.get('env')==='development'){
+    app.use(morgan('tiny'));
+    debugging('Morgan enabled...');
+}
+
+
+
 const courses = [
     { id: 1, name: 'course1' },
     { id: 2, name: 'course2' },
