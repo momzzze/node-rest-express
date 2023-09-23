@@ -9,12 +9,11 @@ console.log('before');
 //     });
 // });
 
-getUser(1)
-.then(user=>getRepositories(user.name))
-.then(repos=>getCommits(repos[0]))
-.then(commits=>console.log(commits)).catch(err=>console.log(err.message));
+// getUser(1)
+//     .then(user => getRepositories(user.name))
+//     .then(repos => getCommits(repos[0]))
+//     .then(commits => console.log(commits)).catch(err => console.log(err.message));
 
-console.log('after');
 
 function getUser(id) {
     return new Promise((resolve, reject) => {
@@ -29,28 +28,33 @@ function getUser(id) {
 
 }
 function getRepositories() {
-    return new Promise((resolve,reject)=>{
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             console.log('calling github api repo');
             resolve(['repo1', 'repo2', 'repo3'])
         }, 2000);
-    })   
+    })
 }
 function getCommits() {
-    return new Promise((resolve,reject)=>{
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             console.log('calling github api commits');
             resolve(['commit'])
         }, 2000);
-    })   
+    })
 }
-// promises
 
+async function displayCommits() {
+    try {
+        const user = await getUser(1);
+        const repo = await getRepositories(user.name);
+        const commits = await getCommits(repo[0]);
+        console.log(commits);
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-// const p = new Promise((resolve, reject) => {
-//     // resolve(1);
-//     reject(2);
-// });
-// console.log('before');
-// p.then(result => console.log('result', result)).catch(e => console.log(e));
-// console.log('after');
+displayCommits();
+
+console.log('after');
