@@ -1,0 +1,29 @@
+GET http://localhost:3006/
+
+
+
+
+
+//auth routes
+
+### Register Route
+POST http://localhost:3006/auth/register
+Content-Type: application/json
+
+{
+    "email": "nikola@ninov.org",
+    "password": "Nikol@",
+    "role": "user",
+    "name": "Nikola"
+}
+
+### Login Route
+POST http://localhost:3006/auth/login
+
+
+### Logout Route
+DELETE  http://localhost:3006/auth/logout
+
+
+### Refresh token Route
+POST http://localhost:3006/auth/refresh-token
