@@ -11,7 +11,7 @@
     "mongoose": "^8.0.3",
     "morgan": "^1.10.0",
     "nodemon": "^3.0.2",
-    "redis": "^4.6.11"
+    "redis": "^3.0.0"
   },
   "name": "express-js-auth-apis",
   "version": "1.0.0",
