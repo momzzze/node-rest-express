@@ -32,7 +32,7 @@ POST http://localhost:3006/auth/refresh-token
 Content-Type: application/json
 
 {
-    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDIyODA4MjQsImV4cCI6MTczMzgzODQyNCwiYXVkIjoiNjU3NjBiYmQ5MWFhY2FjODhmZWYxNGVhIiwiaXNzIjoibW9tenp6ZS5jb20ifQ.bPZYj-tDe4NG2QIy8nR6XQn15xzXDVe-dVjbvhV9iOU"
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDIzNjcxMzEsImV4cCI6MTczMzkyNDczMSwiYXVkIjoiNjU3NjBiYmQ5MWFhY2FjODhmZWYxNGVhIiwiaXNzIjoibW9tenp6ZS5jb20ifQ.oIrwv9kx1Io_wYRFZz8B82IyGAfRmrtYaZH9eMhB4oo"
 }
 
 
@@ -41,6 +41,6 @@ DELETE  http://localhost:3006/auth/logout
 Content-Type: application/json
 
 {
-    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDIyODA4NjEsImV4cCI6MTczMzgzODQ2MSwiYXVkIjoiNjU3NjBiYmQ5MWFhY2FjODhmZWYxNGVhIiwiaXNzIjoibW9tenp6ZS5jb20ifQ.n8jLAciqGIafXX3LR9G5mqhXJ2H-bKbhvQaxqxIBotk"
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDIzNjcxMDAsImV4cCI6MTczMzkyNDcwMCwiYXVkIjoiNjU3NjBiYmQ5MWFhY2FjODhmZWYxNGVhIiwiaXNzIjoibW9tenp6ZS5jb20ifQ.p-xaCTa9Gzyp4mL8erycjB1dDGTeY_HsQeE_Lg8ywMQ"
 }
 
