@@ -1,0 +1,4 @@
+Text for something like this:
+```javascript
+var text = new Text('Hello World');
+```
