@@ -33,7 +33,7 @@ module.exports = (req, res) => {
     else if (pathname === '/cats/add-cat' && req.method === 'POST') {
         let form = new formidable.IncomingForm();
         form.parse(req, (err, fields, files) => {
-            if (err) { throw err; }
+            if (err) { throw err }
 
             let oldPath = files.upload[0].filepath;
             let newPath = path.normalize(path.join(__dirname, '../content/images/' + files.upload[0].originalFilename));
