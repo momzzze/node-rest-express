@@ -31,14 +31,33 @@ const io = new Server(expressServer, {
 });
 
 io.on('connection', (socket) => {
-    console.log(`User ${socket.id} connected`);
+    // console.log(`User ${socket.id} connected`);
+    // only to user
+    socket.emit('message', 'Welcome to chat app');
+    
+    // to all users except the user who joined
+    socket.broadcast.emit('message', `User ${socket.id.substring(0, 5)} joined the chat`);
 
 
+    //listening for message event
     socket.on('message', (data) => {
         console.log(data);
-        io.emit('message', `${socket.id.substring(0, 5)} : ${data}`);
+        io.emit('message', `User ${socket.id.substring(0, 5)} : ${data}`);
+    });
+
+    //when user disconnects
+    socket.on('disconnect', () => {
+        console.log(`User ${socket.id} disconnected`);
+        socket.broadcast.emit('message', `User ${socket.id.substring(0, 5)} left the chat`);
+    });
+
+    //listening for activity event
+    socket.on('activity', (name) => {
+        socket.broadcast.emit('activity', name);
     });
 });
+
+
 
 // httpServer.listen(3500, () => {
 //     console.log('listening on *:3500');
