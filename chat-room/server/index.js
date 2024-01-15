@@ -32,8 +32,6 @@ const io = new Server(expressServer, {
 });
 io.on('connection', (socket) => {
     console.log(`User ${socket.id} connected`);
-    // only to user
-    socket.emit('message', buildMsg(ADMIN, 'Welcome to chat app'));
     // to all users except the user who joined
     socket.broadcast.emit('message', `User ${socket.id.substring(0, 5)} joined the chat`);
     socket.on('enterRoom', ({ name, room }) => {
