@@ -5,34 +5,18 @@
 **Author:** Nikola Ninov  
 ## Tech Stack
 
-<details>
-  <summary><b>Click to expand</b></summary>
-
-  <p style="margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px; background-color: #f5f5f5;">
-  
-  - **React**
-    - Tech details about React...
-  - **Node.js**
-    - Tech details about Node.js...
-  - **Express**
-    - Tech details about Express...
-  - **Socket.io**
-    - Tech details about Socket.io...
-  - **JWT**
-    - Tech details about JWT...
-  - **MongoDB**
-    - Tech details about MongoDB...
-  - **Mongoose**
-    - Tech details about Mongoose...
-  - **Vite**
-    - Tech details about Vite...
-  - **CORS**
-    - Tech details about CORS...
-  - **dotenv**
-    - Tech details about dotenv...
-
-  </p>
-</details>
+<p>
+  <img src="https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white&style=flat-square" alt="React Badge" />
+  <img src="https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white&style=flat-square" alt="Node.js Badge" />
+  <img src="https://img.shields.io/badge/Express-000000?logo=express&logoColor=white&style=flat-square" alt="Express Badge" />
+  <img src="https://img.shields.io/badge/Socket.io-010101?logo=socket.io&logoColor=white&style=flat-square" alt="Socket.io Badge" />
+  <img src="https://img.shields.io/badge/JWT-000000?logo=json-web-tokens&logoColor=white&style=flat-square" alt="JWT Badge" />
+  <img src="https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white&style=flat-square" alt="MongoDB Badge" />
+  <img src="https://img.shields.io/badge/Mongoose-47A248?logo=mongodb&logoColor=white&style=flat-square" alt="Mongoose Badge" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white&style=flat-square" alt="Vite Badge" />
+  <img src="https://img.shields.io/badge/CORS-FF3E00?logo=mozilla-firefox&logoColor=white&style=flat-square" alt="CORS Badge" />
+  <img src="https://img.shields.io/badge/dotenv-007ACC?logo=dotenv&logoColor=white&style=flat-square" alt="dotenv Badge" />
+</p>
 
 ## Table of Contents
 
