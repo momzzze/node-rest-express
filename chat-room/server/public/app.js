@@ -35,7 +35,7 @@ function enterRoom(e) {
 document.querySelector('.form-msg').addEventListener('submit', sendMessage);
 document.querySelector('.form-join').addEventListener('submit', enterRoom);
 msgInput.addEventListener('keypress', () => {
-    socket.emit('activity', socket.id.substring(0, 5));
+    socket.emit('activity', nameInput.value);
 })
 
 // listen for messages
