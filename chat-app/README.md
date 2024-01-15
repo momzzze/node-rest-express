@@ -3,21 +3,41 @@
 **Project Name:** Chat App  
 **URL:** [Currently under development]  
 **Author:** Nikola Ninov  
-**Tech Stack:**  
-- React ![React Icon](https://img.icons8.com/officel/16/000000/react.png)
-- Node.js ![Node.js Icon](https://img.icons8.com/color/16/000000/nodejs.png)
-- Express ![Express Icon](https://img.icons8.com/color/16/000000/express.png)
-- Socket.io ![Socket.io Icon](https://img.icons8.com/color/16/000000/socket-io.png)
-- JWT ![JWT Icon](https://img.icons8.com/color/16/000000/json-web-token.png)
-- MongoDB ![MongoDB Icon](https://img.icons8.com/color/16/000000/mongodb.png)
-- Mongoose ![Mongoose Icon](https://img.icons8.com/color/16/000000/mongodb.png)
-- Vite ![Vite Icon](https://img.icons8.com/color/16/000000/vue-js.png)
-- CORS ![CORS Icon](https://img.icons8.com/color/16/000000/cloud-access-security-technology.png)
-- dotenv ![dotenv Icon](https://img.icons8.com/ios/16/000000/dot.png)
+## Tech Stack
+
+<details>
+  <summary><b>Click to expand</b></summary>
+
+  <p style="margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px; background-color: #f5f5f5;">
+  
+  - **React**
+    - Tech details about React...
+  - **Node.js**
+    - Tech details about Node.js...
+  - **Express**
+    - Tech details about Express...
+  - **Socket.io**
+    - Tech details about Socket.io...
+  - **JWT**
+    - Tech details about JWT...
+  - **MongoDB**
+    - Tech details about MongoDB...
+  - **Mongoose**
+    - Tech details about Mongoose...
+  - **Vite**
+    - Tech details about Vite...
+  - **CORS**
+    - Tech details about CORS...
+  - **dotenv**
+    - Tech details about dotenv...
+
+  </p>
+</details>
 
 ## Table of Contents
 
 - [Project Name](#project-name)
+  - [Tech Stack](#tech-stack)
   - [Table of Contents](#table-of-contents)
   - [Project Description](#project-description)
   - [Installation](#installation)
