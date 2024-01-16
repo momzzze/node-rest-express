@@ -1,0 +1,21 @@
+{
+  "name": "express-exercise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "postcss public/styles/tailwind.css -o public/styles/site.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.16",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "postcss": "^8.4.33",
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "^3.4.1"
+  }
+}
