@@ -16,6 +16,9 @@
   <img src="https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white&style=flat-square" alt="Vite Badge" />
   <img src="https://img.shields.io/badge/CORS-FF3E00?logo=mozilla-firefox&logoColor=white&style=flat-square" alt="CORS Badge" />
   <img src="https://img.shields.io/badge/dotenv-007ACC?logo=dotenv&logoColor=white&style=flat-square" alt="dotenv Badge" />
+  <img src="https://img.shields.io/badge/bcrypt-BCrypt?logo=bcrypt&logoColor=white&style=flat-square" alt="bcrypt Badge" />
+  <img src="https://img.shields.io/badge/validator-Validator?logo=validator&logoColor=white&style=flat-square" alt="validator Badge" />
+
 </p>
 
 ## Table of Contents
