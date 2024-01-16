@@ -50,6 +50,28 @@ const registerUser = async (req, res) => {
     }
 }
 
+const loginUser = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        let user=await userModel.findOne({email});
+        if(!user){
+            return res.status(400).json({error:"Invalid Credentials"});
+        }
+        const isValidPassword=await bcrypt.compare(password,user.password);        
+        if(!isValidPassword){
+            return res.status(400).json({error:"Invalid Credentials"});
+        }
+        const token = createToken(user._id);
+
+        res.status(200).json({ _id: user._id, name:user.name, email, token });
+
+    } catch (error) {
+        return res.status(400).json({ error: "Something went wrong" })
+    }
+
+}
+
 module.exports = {
-    registerUser
+    registerUser,
+    loginUser
 }
