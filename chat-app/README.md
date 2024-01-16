@@ -3,8 +3,8 @@
 **Project Name:** Chat App  
 **URL:** [Currently under development]  
 **Author:** Nikola Ninov  
-## Tech Stack
 
+## Tech Stack
 <p>
   <img src="https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white&style=flat-square" alt="React Badge" />
   <img src="https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white&style=flat-square" alt="Node.js Badge" />
