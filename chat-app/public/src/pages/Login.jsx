@@ -1,28 +1,39 @@
+import { useContext } from "react";
 import { Alert, Button, Form, Row, Col, Stack } from "react-bootstrap";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
+    const { loginInfo, updateLoginInfo, loginUser, isLoginLoading, loginError } = useContext(AuthContext);
     return (
         <>
-        <Form>
-            <Row style={{
-                height: "100vh",
-                justifyContent: "center",
-                paddingTop: "10%"
-            }}>
-                <Col xs={6}>
-                    <Stack gap={3}>
-                        <h2>Login</h2>
-                        <Form.Control type="text" placeholder="Enter name" />
-                        <Form.Control type="email" placeholder="Enter email" />
-                        <Form.Control type="password" placeholder="Enter password" />
-                        <Button variant="primary" type="submit" className="mt-3">Login</Button>
-                        <Alert variant="danger" className="mt-3"><p>This is a danger alert—check it out!</p></Alert>
-                    </Stack>
+            <Form onSubmit={loginUser}>
+                <Row style={{
+                    height: "100vh",
+                    justifyContent: "center",
+                    paddingTop: "10%"
+                }}>
+                    <Col xs={6}>
+                        <Stack gap={3}>
+                            <h2>Login</h2>
 
-                </Col>
-            </Row>
-        </Form>
-    </>
+                            <Form.Control type="email" placeholder="Enter email" onChange={(e) => updateLoginInfo({
+                                ...loginInfo,
+                                email: e.target.value
+                            })} />
+
+                            <Form.Control type="password" placeholder="Enter password" onChange={(e) => updateLoginInfo({
+                                ...loginInfo,
+                                password: e.target.value
+                            })} />
+
+                            <Button variant="primary" type="submit" className="mt-3">{isLoginLoading ? 'Login into your account' : 'Login'}</Button>
+                            {loginError?.error && <Alert variant="danger" className="mt-3"><p>{loginError.message}</p></Alert>}
+                        </Stack>
+
+                    </Col>
+                </Row>
+            </Form>
+        </>
     )
 }
 

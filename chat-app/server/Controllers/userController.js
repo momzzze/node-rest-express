@@ -17,16 +17,16 @@ const registerUser = async (req, res) => {
     let user = await userModel.findOne({ email });
 
     if (user) {
-        return res.status(400).json({ error: "User already exists" });
+        return res.status(400).json("User already exists");
     }
     if (!name || !email || !password) {
-        return res.status(400).json({ error: "Please fill all the fields" });
+        return res.status(400).json("Please fill all the fields");
     }
     if (!validator.isEmail(email)) {
-        return res.status(400).json({ error: "Please enter a valid email" });
+        return res.status(400).json("Please enter a valid email");
     }
     if (!validator.isStrongPassword(password)) {
-        return res.status(400).json({ error: "Password must be a strong password..." });
+        return res.status(400).json("Password must be a strong password...");
     }
 
     // if the user does not exist then we will create a new user
@@ -46,52 +46,52 @@ const registerUser = async (req, res) => {
         res.status(200).json({ _id: user._id, name, email, token });
 
     } catch (error) {
-        return res.status(400).json({ error: "Something went wrong" });
+        return res.status(400).json("Something went wrong" );
     }
 }
 
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
     try {
-        let user=await userModel.findOne({email});
-        if(!user){
-            return res.status(400).json({error:"Invalid Credentials"});
+        let user = await userModel.findOne({ email });
+        if (!user) {
+            return res.status(400).json("Invalid Credentials");
         }
-        const isValidPassword=await bcrypt.compare(password,user.password);        
-        if(!isValidPassword){
-            return res.status(400).json({error:"Invalid Credentials"});
+        const isValidPassword = await bcrypt.compare(password, user.password);
+        if (!isValidPassword) {
+            return res.status(400).json("Invalid Credentials");
         }
         const token = createToken(user._id);
 
-        res.status(200).json({ _id: user._id, name:user.name, email, token });
+        res.status(200).json({ _id: user._id, name: user.name, email, token });
 
     } catch (error) {
-        return res.status(400).json({ error: "Something went wrong" })
+        return res.status(400).json("Something went wrong")
     }
 
 }
 
-const findUser=async(req,res)=>{
-    const userId=req.params.userId;
+const findUser = async (req, res) => {
+    const userId = req.params.userId;
     try {
-        const user=await userModel.findById(userId);
-        if(!user){
-            return res.status(400).json({error:"User not found"});
+        const user = await userModel.findById(userId);
+        if (!user) {
+            return res.status(400).json("User not found");
         }
         res.status(200).json(user);
 
     } catch (error) {
-        return res.status(500).json({ error: "Something went wrong" })
+        return res.status(500).json("Something went wrong")
     }
 }
 
 
-const getAllUsers=async(req,res)=>{
-    const users=await userModel.find();
+const getAllUsers = async (req, res) => {
+    const users = await userModel.find();
     try {
         res.status(200).json(users);
     } catch (error) {
-        return res.status(500).json({ error: "Something went wrong" })
+        return res.status(500).json("Something went wrong")
     }
 }
 
