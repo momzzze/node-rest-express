@@ -71,7 +71,34 @@ const loginUser = async (req, res) => {
 
 }
 
+const findUser=async(req,res)=>{
+    const userId=req.params.userId;
+    try {
+        const user=await userModel.findById(userId);
+        if(!user){
+            return res.status(400).json({error:"User not found"});
+        }
+        res.status(200).json(user);
+
+    } catch (error) {
+        return res.status(500).json({ error: "Something went wrong" })
+    }
+}
+
+
+const getAllUsers=async(req,res)=>{
+    const users=await userModel.find();
+    try {
+        res.status(200).json(users);
+    } catch (error) {
+        return res.status(500).json({ error: "Something went wrong" })
+    }
+}
+
+
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    findUser,
+    getAllUsers
 }
