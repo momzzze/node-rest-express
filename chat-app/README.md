@@ -18,7 +18,7 @@
   <img src="https://img.shields.io/badge/dotenv-007ACC?logo=dotenv&logoColor=white&style=flat-square" alt="dotenv Badge" />
   <img src="https://img.shields.io/badge/bcrypt-BCrypt?logo=bcrypt&logoColor=white&style=flat-square" alt="bcrypt Badge" />
   <img src="https://img.shields.io/badge/validator-Validator?logo=validator&logoColor=white&style=flat-square" alt="validator Badge" />
-
+  <img src="https://img.shields.io/badge/React%20Bootstrap-7952B3?logo=react&logoColor=white&style=flat-square" alt="bootstrap" />
 </p>
 
 ## Table of Contents
