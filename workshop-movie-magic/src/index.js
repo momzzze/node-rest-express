@@ -1,19 +1,20 @@
-const express=require('express');
-const handlebars=require('express-handlebars');
-const path=require('path');
-const app=express();
+const express = require('express');
+const handlebars = require('express-handlebars');
+const path = require('path');
+const app = express();
+const port = 5001;
 
-app.engine('hbs',handlebars.engine({
-    extname:'hbs',
+app.engine('hbs', handlebars.engine({
+    extname: 'hbs',
 }));
-app.set('view engine','hbs');
-app.set('views',path.join(__dirname,'views'));
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
 
-const port=5001;
-app.get('/',(req,res)=>{
-    res.send('Hello world');
+app.get('/', (req, res) => {
+    res.render('home', { layout: false });
 });
 
-app.listen(port,()=>{
+app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
