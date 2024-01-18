@@ -11,8 +11,7 @@
                     </div>
                     <div class="second-info">
                         <p class="card-year">Year: {{movie.date}}</p>
-                        <p class="card-ranking">Rating: <span id="stars">&#x2605; &#x2605; &#x2605;
-                                &#x2605;</span></p>
+                        <p class="card-ranking">Rating: <span id="stars"> {{#each movieRating}} {{{this}}} {{/each}}</span></p>
                     </div>
 
                 </div>
