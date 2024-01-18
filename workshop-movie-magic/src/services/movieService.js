@@ -28,6 +28,11 @@ const writeToDb = (data) => {
     fs.writeFileSync(moviesFilePath, JSON.stringify(data, null, 2), 'utf8');
 }
 
+const getOne =(id) =>{
+    const movies = readFromDb();
+    return movies.find(movie => movie.id === id);
+}
+
 exports.create = (movieData) => {
     const movie = {
         id: uuidv4(),
@@ -42,6 +47,7 @@ exports.create = (movieData) => {
     writeToDb(existingMovies);
 }
 
-module.exports={
+module.exports = {
     readFromDb,
+    getOne
 }
