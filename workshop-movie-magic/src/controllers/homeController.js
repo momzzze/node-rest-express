@@ -15,7 +15,7 @@ router.get('/search', (req, res) => {
     const { title, genre, year } = req.query;
     const filteredMovies = movieService.search( title, genre, year);
 
-    res.render('search', { movies:filteredMovies });
+    res.render('search', { movies:filteredMovies,title, genre, year });
 });
 
 
