@@ -1,7 +1,10 @@
-const router=require('express').Router();
+const router = require('express').Router();
+const { readFromDb } = require('../services/movieService')
+
 
 router.get('/', (req, res) => {
-    res.render('home');
+    const movies = readFromDb();
+    res.render('home', { movies });
 });
 
 router.get('/about', (req, res) => {
@@ -13,4 +16,4 @@ router.get('/404', (req, res) => {
 });
 
 
-module.exports=router
+module.exports = router

@@ -34,10 +34,14 @@ exports.create = (movieData) => {
         ...movieData
     }
     const existingMovies = readFromDb();
-    
+
     if (existingMovies.some(movie => movie.title === movieData.title)) {
         return;
     }
     existingMovies.push(movie);
     writeToDb(existingMovies);
+}
+
+module.exports={
+    readFromDb,
 }
