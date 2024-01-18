@@ -28,9 +28,23 @@ const writeToDb = (data) => {
     fs.writeFileSync(moviesFilePath, JSON.stringify(data, null, 2), 'utf8');
 }
 
-const getOne =(id) =>{
+const getOne = (id) => {
     const movies = readFromDb();
     return movies.find(movie => movie.id === id);
+}
+const search = (title, genre, year) => {
+    let movies = readFromDb();
+    if (title) {
+        movies = movies.filter(movie => movie.title.toLowerCase().includes(title.toLowerCase()));
+    }
+    if (genre) {
+        movies = movies.filter(movie => movie.genre.toLowerCase() === genre.toLowerCase());
+    }
+    if (year) {
+        movies = movies.filter(movie => movie.date === year);
+    }
+    return movies;
+
 }
 
 exports.create = (movieData) => {
@@ -49,5 +63,6 @@ exports.create = (movieData) => {
 
 module.exports = {
     readFromDb,
-    getOne
+    getOne,
+    search
 }
