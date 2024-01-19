@@ -42,11 +42,31 @@ export const ChatContextProvider = ({ children, user }) => {
             setOnlineUsers(users);     //set onlineUsers state
             console.log("online users", users);
         })
-        return ()=>{
+        return () => {
             socket.off("getOnlineUsers")    //remove getOnlineUsers event listener when component unmounts
         }
     }, [socket])
 
+    //send message
+    useEffect(() => {
+        if (socket === null) return;    // if socket is not initialized, return
+        const recipientId = currentChat?.members?.find((id) => id !== user?._id)
+        socket.emit("sendMessage", { ...newMessage, recipientId })   //emit sendMessage event to server
+
+    }, [newMessage])
+
+    //receive message
+    useEffect(() => {
+        if (socket === null) return;    // if socket is not initialized, return
+        socket.on("getMessage", (res) => {    //listen for getMessage event we receive from server
+            if (currentChat?._id !== res.chatId) return   //if currentChatId is not equal to message.chatId, return
+            setMessages((prev) => [...prev, res]);     //set newMessage state
+        })
+        return () => {
+            socket.off("getMessage")    //remove getMessage event listener when component unmounts
+        }
+
+    }, [socket, currentChat])
 
     useEffect(() => {
         const getUsers = async () => {
