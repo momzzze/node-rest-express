@@ -5,6 +5,7 @@ import {
     useState
 } from "react"
 import { getRequest, postRequest, baseUrl } from "../utils/services"
+import { io } from "socket.io-client"
 
 export const ChatContext = createContext({
 
@@ -21,7 +22,30 @@ export const ChatContextProvider = ({ children, user }) => {
     const [messagesError, setMessagesError] = useState(null);
     const [sendTextMessageError, setSendTextMessageError] = useState(null);
     const [newMessage, setNewMessage] = useState(null);
+    const [socket, setSocket] = useState(null);
+    const [onlineUsers, setOnlineUsers] = useState([]);
+    //init socket
+    useEffect(() => {
+        const newSocket = io("http://localhost:4000");  //create new socket
+        setSocket(newSocket);    //set socket state
+        return () => {
+            newSocket.disconnect()   //disconnect socket when component unmounts
+        }
+    }, [user])
 
+
+    //add online users
+    useEffect(() => {
+        if (socket === null) return;    // if socket is not initialized, return
+        socket.emit("addNewUser", user?._id)   //emit addNewUser event to server
+        socket.on("getOnlineUsers", (users) => {    //listen for getOnlineUsers event we receive from server
+            setOnlineUsers(users);     //set onlineUsers state
+            console.log("online users", users);
+        })
+        return ()=>{
+            socket.off("getOnlineUsers")    //remove getOnlineUsers event listener when component unmounts
+        }
+    }, [socket])
 
 
     useEffect(() => {
@@ -128,7 +152,8 @@ export const ChatContextProvider = ({ children, user }) => {
             messages,
             isMessagesLoading,
             messagesError,
-            sendTextMessage
+            sendTextMessage,
+            onlineUsers
         }}
     >
         {children}
