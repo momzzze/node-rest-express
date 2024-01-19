@@ -11,16 +11,12 @@ import {
 
 
 export const AuthContext = createContext({
-    user: null,
-    login: (userData) => {},
-    logout: () => {}
+    user: null,   
 });
 
 
 
-export const AuthContextProvider = ({
-    children
-}) => {
+export const AuthContextProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     //register state------------------------------------
