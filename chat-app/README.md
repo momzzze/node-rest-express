@@ -21,6 +21,7 @@
   <img src="https://img.shields.io/badge/React%20Bootstrap-7952B3?logo=react&logoColor=white&style=flat-square" alt="bootstrap" />
   <img src="https://img.shields.io/badge/Moment.js-3154A5?logo=moment&logoColor=white&style=flat-square" alt="moment">
   <img src="https://img.shields.io/badge/React%20Input%20Emoji-00D3A0?logo=react&logoColor=white&style=flat-square" alt="react-input-emoji">
+  <img src="https://img.shields.io/badge/Socket.IO%20Client-010101?logo=socket.io&logoColor=white&style=flat-square" alt="socket.io-client">
 </p>
 
 ## Table of Contents
