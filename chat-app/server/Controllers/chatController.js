@@ -8,18 +8,18 @@ const chatModel = require('../Models/chatModel');
 // if the chat does not exist then we will create a new chat
 // and then send the chat
 const createChat = async (req, res) => {
-    const { firstChatterId, secondChatterId } = req.body;
+    const { firstId, secondId } = req.body;
 
     try {
         const chat = await chatModel.findOne({
-            members: { $all: [firstChatterId, secondChatterId] }  // if both the ids are in the members array then return the chat
+            members: { $all: [firstId, secondId] }  // if both the ids are in the members array then return the chat
         });
         if (chat) {
             return res.status(200).json(chat);
         }
 
         const newChat = new chatModel({
-            members: [firstChatterId, secondChatterId]
+            members: [firstId, secondId]
         });
         const response = await newChat.save();
         res.status(200).json(response);
@@ -50,9 +50,9 @@ const findUserChats = async (req, res) => {
 
 // find Chat
 const findChat = async (req, res) => {
-    const { firstId, secondId } = req.body;
+    const { firstId, secondId } = req.params;
     try {
-        const chat = await chatModel.find({
+        const chat = await chatModel.findOne({
             members: { $all: [firstId, secondId] }
         });
 
