@@ -19,6 +19,7 @@
   <img src="https://img.shields.io/badge/bcrypt-BCrypt?logo=bcrypt&logoColor=white&style=flat-square" alt="bcrypt Badge" />
   <img src="https://img.shields.io/badge/validator-Validator?logo=validator&logoColor=white&style=flat-square" alt="validator Badge" />
   <img src="https://img.shields.io/badge/React%20Bootstrap-7952B3?logo=react&logoColor=white&style=flat-square" alt="bootstrap" />
+  <img src="https://img.shields.io/badge/Moment.js-3154A5?logo=moment&logoColor=white&style=flat-square" alt="moment">
 </p>
 
 ## Table of Contents
