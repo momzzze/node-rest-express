@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const userRouter = require('./Routes/userRoute');
 const chatRouter = require('./Routes/chatRoute');
+const messageRouter = require('./Routes/messageRoute');
 
 const app = express();
 
@@ -10,7 +11,7 @@ app.use(express.json())   //middleware
 app.use(cors())           //middleware used to connect to frontend
 app.use('/api/users', userRouter);  //middleware
 app.use('/api/chats', chatRouter)  //middleware
-
+app.use('/api/messages', messageRouter)  //middleware
 //CRUD operations
 app.get("/", (req, res) => {
     res.send("Hello from server");
