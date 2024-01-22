@@ -89,3 +89,4 @@ MIT License
 
 ![Screenshot 1](images/chatAppDisplayChat.png)
 ![Screenshot 2](images/chatAppNotification.png)
+![Screenshot 3](images/chatRoomWithSomeMessages.png)
