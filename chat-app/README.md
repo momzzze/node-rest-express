@@ -35,20 +35,35 @@
   - [Features](#features)
   - [Contributing](#contributing)
   - [License](#license)
+  - [Screenshots](#screenshots)
 
 ## Project Description
 
-This will be chat application with authentication.
+Chat app
 
 ## Installation
 
-This app will be deployed but for the moment is under development.
+This app should be started with 3 terminals for server scoket and public folder.
 Commands are:
 
 ```JavaScript
-
+    cd public
     npm install
     npm run dev
+
+```
+
+```JavaScript
+    cd server
+    npm install
+    nodemon
+
+```
+
+```JavaScript
+    cd socket
+    npm install
+    nodemon
 
 ```
 
@@ -70,4 +85,7 @@ You can give me any feedback you want. I am open to any suggestions.
 MIT License
 
 ```
+## Screenshots
 
+![Screenshot 1](images/chatAppDisplayChat.png)
+![Screenshot 2](images/chatAppNotification.png)

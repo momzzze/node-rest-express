@@ -27,8 +27,6 @@ export const ChatContextProvider = ({ children, user }) => {
     const [notifications, setNotifications] = useState([]);
     const [allUsers, setAllUsers] = useState([]);
 
-    console.log("getNotifications", notifications);
-
     //init socket
     useEffect(() => {
         const newSocket = io("http://localhost:4000");  //create new socket
@@ -45,7 +43,7 @@ export const ChatContextProvider = ({ children, user }) => {
         socket.emit("addNewUser", user?._id)   //emit addNewUser event to server
         socket.on("getOnlineUsers", (users) => {    //listen for getOnlineUsers event we receive from server
             setOnlineUsers(users);     //set onlineUsers state
-            console.log("online users", users);
+           
         })
         return () => {
             socket.off("getOnlineUsers")    //remove getOnlineUsers event listener when component unmounts
