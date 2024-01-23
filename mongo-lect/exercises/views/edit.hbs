@@ -1,0 +1,18 @@
+<div>
+    <h1>Edit student</h1>
+    <form action="/students/edit/{{student._id}}" method="POST">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="Name" value="{{student.name}}">
+
+        <label for="facultyNumber">Faculty number</label>
+        <input type="text" name="facultyNumber" id="facultyNumber" placeholder="Faculty number" value="{{student.facultyNumber}}">
+
+        <label for="age">Age</label>
+        <input type="number" name="age" id="age" placeholder="Age" value="{{student.age}}">
+
+        <label for="grade">Grade</label>
+        <input type="text" name="grade" id="grade" placeholder="Grade" value="{{student.grade}}">
+
+        <input type="submit" value="Edit">
+    </form>
+</div>

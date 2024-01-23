@@ -1,0 +1,22 @@
+<div>
+    <h1>All students</h1>
+    {{#if students}}
+    <ul>
+        {{#each students}}
+        <li>
+            <div>
+                <h2>{{name}}</h2>
+                <p>Faculty number: {{facultyNumber}}</p>
+                <p>Age: {{age}}</p>
+                <p>Grade: {{grade}}</p>
+            </div>
+            <div>
+                <a href="/students/{{_id}}">Details</a>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+    {{else}}
+    <p>No students found.</p>
+    {{/if}}
+</div>

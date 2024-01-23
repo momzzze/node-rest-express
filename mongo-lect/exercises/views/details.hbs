@@ -1,0 +1,16 @@
+<div>
+    <h1>Student details</h1>
+    <div>
+        <h2>{{student.name}}</h2>
+        <p>Faculty number: {{student.facultyNumber}}</p>
+        <p>Age: {{student.age}}</p>
+        <p>Grade: {{student.grade}}</p>
+    </div>
+    <div>
+        <a href="/students/edit/{{student._id}}">Edit</a>
+        <a href="/students/delete/{{student._id}}">Delete</a>
+    </div>
+    <div>
+        <a href="/students/all">Back to all students</a>
+    </div>
+</div>
