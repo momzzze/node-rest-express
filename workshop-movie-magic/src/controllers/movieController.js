@@ -15,10 +15,7 @@ router.post('/create',async (req, res) => {
     } catch (error) {
         console.log(error.message);
         res.status(400).end();
-    }
-   
-
-    
+    } 
 });
 
 router.get('/movies/:movieId', (req, res) => {

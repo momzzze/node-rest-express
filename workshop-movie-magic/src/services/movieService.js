@@ -48,7 +48,8 @@ const search = (title, genre, year) => {
 
 }
 
-exports.create = (movieData) => {
+const create = (movieData) => {
+    console.log(movieData);
     return movieModel.create(movieData);
     // const movie = {
     //     id: uuidv4(),
@@ -66,5 +67,6 @@ exports.create = (movieData) => {
 module.exports = {
     readFromDb,
     getOne,
-    search
+    search,
+    create
 }
