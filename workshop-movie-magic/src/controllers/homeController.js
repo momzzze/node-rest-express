@@ -2,8 +2,9 @@ const router = require('express').Router();
 const { readFromDb } = require('../services/movieService')
 const movieService = require('../services/movieService')
 
-router.get('/', (req, res) => {
-    const movies = readFromDb();
+router.get('/', async(req, res) => {
+    const movies =await movieService.getAll().lean();
+    console.log(movies);
     res.render('home', { movies });
 });
 

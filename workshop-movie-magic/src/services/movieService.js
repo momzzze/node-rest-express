@@ -25,6 +25,13 @@ const readFromDb = () => {
         return []
     }
 }
+
+const getAll=()=>{
+    const movies= movieModel.find()
+    return movies;
+}
+
+
 const writeToDb = (data) => {
     fs.writeFileSync(moviesFilePath, JSON.stringify(data, null, 2), 'utf8');
 }
@@ -68,5 +75,6 @@ module.exports = {
     readFromDb,
     getOne,
     search,
-    create
+    create,
+    getAll
 }

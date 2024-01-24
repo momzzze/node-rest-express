@@ -10,7 +10,7 @@
                         <p class="card-director">Directror: {{movie.director}}</p>
                     </div>
                     <div class="second-info">
-                        <p class="card-year">Year: {{movie.date}}</p>
+                        <p class="card-year">Year: {{movie.year}}</p>
                         <p class="card-ranking">Rating: <span id="stars"> {{#each movieRating}} {{{this}}} {{/each}}</span></p>
                     </div>
 
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="card_right">
-            <img src="{{movie.image}}" alt="{{movie.title}}">
+            <img src="{{movie.imageUrl}}" alt="{{movie.title}}">
         </div>
     </div>
 
