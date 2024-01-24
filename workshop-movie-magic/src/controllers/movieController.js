@@ -18,8 +18,9 @@ router.post('/create',async (req, res) => {
     } 
 });
 
-router.get('/movies/:movieId', (req, res) => {
-    const movie = movieService.getOne(req.params.movieId);   
+router.get('/movies/:movieId',async (req, res) => {
+    const movieId=req.params.movieId
+    const movie =await movieService.getOne(movieId).lean();   
     const movieRating=Array.from({length:parseInt(movie.rating)},()=> '&#x2605;');
     res.render('details', { movie, movieRating });
 });

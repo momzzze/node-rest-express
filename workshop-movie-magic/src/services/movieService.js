@@ -37,11 +37,14 @@ const writeToDb = (data) => {
 }
 
 const getOne = (id) => {
-    const movies = readFromDb();
-    return movies.find(movie => movie.id === id);
+    const movie = movieModel.findById(id)
+    return movie
 }
-const search = (title, genre, year) => {
-    let movies = readFromDb();
+
+//TODO filter result in mongoDB
+const search = async(title, genre, year) => {
+    let movies =await movieModel.find().lean();
+
     if (title) {
         movies = movies.filter(movie => movie.title.toLowerCase().includes(title.toLowerCase()));
     }
