@@ -7,7 +7,7 @@ router.get('/create', (req, res) => {
     res.render('create');
 });
 
-router.post('/create',async (req, res) => {
+router.post('/create', async (req, res) => {
     const newMovie = req.body;
     try {
         await movieService.create(newMovie)
@@ -15,15 +15,19 @@ router.post('/create',async (req, res) => {
     } catch (error) {
         console.log(error.message);
         res.status(400).end();
-    } 
+    }
 });
 
-router.get('/movies/:movieId',async (req, res) => {
-    const movieId=req.params.movieId
-    const movie =await movieService.getOne(movieId).lean();   
-    const movieRating=Array.from({length:parseInt(movie.rating)},()=> '&#x2605;');
+router.get('/movies/:movieId', async (req, res) => {
+    const movieId = req.params.movieId
+    const movie = await movieService.getOne(movieId).lean();
+    const movieRating = Array.from({ length: parseInt(movie.rating) }, () => '&#x2605;');
     res.render('details', { movie, movieRating });
 });
+
+router.get('/movies/:movieId/attach', (req, res) => {
+    res.render('movie/attach')
+})
 
 
 module.exports = router;
