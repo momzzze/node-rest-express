@@ -23,13 +23,19 @@ const castSchema = new mongoose.Schema({
     castImage: {
         type: String,
         required: true,
-        validate:{
-            validator(value){ 
+        validate: {
+            validator(value) {
                 return /^https?:\/\//.test(value)
             },
-            message: (props)=>`${props.value} is invalid url for the cast image!`
+            message: (props) => `${props.value} is invalid url for the cast image!`
         }
     },
+    movies: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'Movie'
+        }
+    ]
 })
 
 

@@ -14,6 +14,7 @@ const movieModel = require('../models/MovieModel');
 const fs = require('fs');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
+const castModel = require('../models/CastModel');
 
 const moviesFilePath = path.join(__dirname, '../config/database.json');
 
@@ -37,7 +38,7 @@ const writeToDb = (data) => {
 }
 
 const getOne = (id) => {
-    const movie = movieModel.findById(id)
+    const movie = movieModel.findById(id).populate('casts')
     return movie
 }
 
@@ -77,8 +78,11 @@ const create = (movieData) => {
 const attach = async (movieId, castId, casts) => {
     try {
         const movie = await getOne(movieId)
+        const cast = await castModel.findById(castId);
         const isItInCast = casts.some(cast => cast._id.toString() === castId);
         const isItInMovies = movie.casts.includes(castId)
+
+
         if (!isItInCast) {
             throw new Error('Cast does not exist')
         }
@@ -86,6 +90,9 @@ const attach = async (movieId, castId, casts) => {
             throw new Error('Cast already attached')
         }
         movie.casts.push(castId);
+        cast.movies.push(movie)
+
+        await cast.save();
         return movie.save();
         // return movieModel.findByIdAndUpdate(movieId, { $push: { casts: castId } })
     } catch (error) {
