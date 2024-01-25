@@ -43,19 +43,22 @@ const getOne = (id) => {
 }
 
 //TODO filter result in mongoDB
-const search = async (title, genre, year) => {
-    let movies = await movieModel.find().lean();
+const search = (title, genre, year) => {
+    let query = {};
 
     if (title) {
-        movies = movies.filter(movie => movie.title.toLowerCase().includes(title.toLowerCase()));
+        // query = movies.filter(movie => movie.title.toLowerCase().includes(title.toLowerCase()));
+        query.title = new RegExp(title, 'i')
     }
     if (genre) {
-        movies = movies.filter(movie => movie.genre.toLowerCase() === genre.toLowerCase());
+        // query = movies.filter(movie => movie.genre.toLowerCase() === genre.toLowerCase());
+        query.genre = genre.toLowerCase()
     }
     if (year) {
-        movies = movies.filter(movie => movie.date === year);
+        // query = query.filter(movie => movie.date === year);
+        query.year = year;
     }
-    return movies;
+    return movieModel.find(query);
 
 }
 
