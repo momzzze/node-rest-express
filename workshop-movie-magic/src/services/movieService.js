@@ -9,7 +9,7 @@
 //         description: 'Description: Dreaming about saving countless lives and having another adventure, the feisty English feminist and doctor of botany, Dr Lily Houghton, embarks on a peril-laden mission to change the world. Along with her fashionable brother, MacGregor, Dr Houghton enlists the help of the arrogant, wisecracking riverboat skipper, Captain Frank Wolff, to guide them through the serpentine Amazon River in La Quila, his swift wooden boat. Now, as the intrepid trio ventures deeper and deeper into the heart of an impenetrable green maze, searching for something that cannot be found, a centuries-old curse and the ruthless aristocrat, Prince Joachim, threaten to put an end to their ambitious plans.'
 //     }
 // ];
-const movieModel=require('../models/MovieModel');
+const movieModel = require('../models/MovieModel');
 
 const fs = require('fs');
 const path = require('path');
@@ -26,8 +26,8 @@ const readFromDb = () => {
     }
 }
 
-const getAll=()=>{
-    const movies= movieModel.find()
+const getAll = () => {
+    const movies = movieModel.find()
     return movies;
 }
 
@@ -42,8 +42,8 @@ const getOne = (id) => {
 }
 
 //TODO filter result in mongoDB
-const search = async(title, genre, year) => {
-    let movies =await movieModel.find().lean();
+const search = async (title, genre, year) => {
+    let movies = await movieModel.find().lean();
 
     if (title) {
         movies = movies.filter(movie => movie.title.toLowerCase().includes(title.toLowerCase()));
@@ -74,10 +74,33 @@ const create = (movieData) => {
     // writeToDb(existingMovies);
 }
 
+const attach = async (movieId, castId, casts) => {
+    try {
+        const movie = await getOne(movieId)
+        const isItInCast = casts.some(cast => cast._id.toString() === castId);
+        const isItInMovies = movie.casts.includes(castId)
+        if (!isItInCast) {
+            throw new Error('Cast does not exist')
+        }
+        if (isItInMovies) {
+            throw new Error('Cast already attached')
+        }
+        movie.casts.push(castId);
+        return movie.save();
+        // return movieModel.findByIdAndUpdate(movieId, { $push: { casts: castId } })
+    } catch (error) {
+        console.error(`Error in attaching cast: ${error.message}`);
+    }
+
+
+
+}
+
 module.exports = {
     readFromDb,
     getOne,
     search,
     create,
-    getAll
+    getAll,
+    attach
 }

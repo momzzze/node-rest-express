@@ -35,6 +35,12 @@ const movieSchema = new mongoose.Schema({
         required: true,
         match: [/^https?:\/\//, 'Image must be a valid URL']
     },
+    casts:[
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'Cast'
+        }
+    ]
 })
 
 
