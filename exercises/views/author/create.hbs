@@ -1,0 +1,74 @@
+<h1>Create Author</h1>
+<div class="author__container">
+    <div class="box">
+        <div class="author-content">
+
+            <form action="/author/create" method="POST">
+
+                <div class="position-input-label">
+                    <label class="label" for="name">Name</label>
+                    <input class="text-input" type="text" name="name" id="name" placeholder="Enter first name...">
+                </div>
+
+                <div class="position-input-label">
+                    <label class="label" for="birthDate">Birth Date</label>
+                    <input class="text-input" type="date" name="birthDate" id="birthDate"
+                        placeholder="Enter Birth Date...">
+                </div>
+
+                <div class="position-input-label">
+                    <label class="label" for="imageUrl">Picture</label>
+                    <input class="text-input" type="text" name="imageUrl" id="imageUrl"
+                        placeholder="Enter picture address...">
+                </div>
+
+                <div class="position-input-label">
+                    <label class="label" for="biography">Biography</label>
+                    <textarea class="textarea-label" name="biography" id="biography" cols="30" rows="10"
+                        placeholder="Enter biography..."></textarea>
+                </div>
+
+                <div class="dropdown-element-position">
+                    <label for="writingGenre">Select Genres:</label>
+                    <div class="dropdown">
+                        <div class="dropdown-menu" id="genresDropdown">
+                            {{#each writingGenre}}
+                            <div class="dropdown-item">
+                                <input type="checkbox" name="writingGenre" value="{{_id}}"> {{name}}
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="position-input-label">
+                    <input class="btn-submit" type="submit" value="Create">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var dropdownMenu = document.getElementById('genresDropdown');
+
+        // Close the dropdown when clicking outside of it
+        document.addEventListener('click', function (event) {
+            if (!dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+
+        // Toggle the 'show' class when clicking on the label
+        document.querySelector('label[for="genres"]').addEventListener('click', function () {
+            dropdownMenu.classList.toggle('show');
+        });
+
+        // Update the dropdown and close it when an option is clicked
+        dropdownMenu.addEventListener('change', function (event) {
+            var selectedGenres = Array.from(dropdownMenu.querySelectorAll('input:checked')).map(input => input.value);
+            console.log('Selected Genres:', selectedGenres);
+            dropdownMenu.classList.remove('show');
+        });
+    });
+</script>

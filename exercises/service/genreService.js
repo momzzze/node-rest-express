@@ -12,13 +12,23 @@ const createGenre = async (genre) => {
             throw new Error('Genre already exists');
         }
         // create genre
-        const createGenre=await Genre.create(genre);
+        const createGenre = await Genre.create(genre);
         createGenre.save();
     } catch (error) {
         console.log(error);
     }
 }
 
+const getAllGenres = async () => {
+    const allGenres = await Genre.find({}).lean();
+    
+    return allGenres;
+}
+
+
+
+
 module.exports = {
-    createGenre
+    createGenre,
+    getAllGenres,
 }
