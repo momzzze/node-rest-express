@@ -15,14 +15,19 @@ const authorSchema = new mongoose.Schema({
         required: true,
         validate: /^https?/,
     },
+    biography: {
+        type: String,
+        required: true,
+        min: 10,
+    },
     publishedBooks: [{
         type: mongoose.Types.ObjectId,
         ref: 'Book',
     }],
-    writingGenre: {
+    writingGenre: [{
         type: mongoose.Types.ObjectId,
         ref: 'Genre',
-    },
+    }],
 }, {
     timestamps: true,
 })
