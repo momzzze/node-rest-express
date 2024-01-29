@@ -280,3 +280,120 @@ h1 {
   padding: 0;
   box-sizing: border-box;
 }
+
+.book__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* .book-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  margin: 10px;
+  padding: 10px;
+  width: 80%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+} */
+
+.book-card {
+  position: relative;  
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: 80%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+
+  /* Pseudo-elements for the gradient and blur effect */
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px; /* Adjust based on your border-radius */
+    background-color: #fff;
+    z-index: -1;
+  }
+
+  &::after {
+    filter: blur(20px); /* Adjust based on your desired blur strength */
+  }
+
+  &::before,
+  &::after {
+    background: linear-gradient(22deg, #ff5555, #ff9c55);
+    animation: animate 20s linear infinite;
+  }
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+.book-card:hover {
+  box-shadow: 0 8px 16px rgba(255, 85, 85, 0.5), 0 0 26px rgba(255, 156, 85, 0.5); 
+}
+/* Styling for the book cover image */
+.book-card img {
+  max-width: 100%;
+  height: 70%;
+  border-radius: 4px;
+}
+
+/* Styling for the book details */
+.book-details {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+/* Styling for the book title */
+.book-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Styling for the book author */
+.book-author {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+/* Styling for the book description */
+.book-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 4; /* Display up to 2 lines */
+  max-height: 6em;
+}
+.book-description:not(:-webkit-box) {
+  max-height: 6em; /* Display up to 2 lines with a fallback for other browsers */
+  overflow: hidden;
+}
+
+
+.btn_details{
+  display: block;
+  margin: 0 auto;
+  background:  #ff9c55;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: semi-bold;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  border-radius: 10px;
+}
+.btn_details:hover{
+  cursor: pointer;
+  background: var(--red);
+}
