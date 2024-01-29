@@ -268,7 +268,7 @@ h1 {
 .about__cover {
   flex: 1;
   max-width: 50%;
-  height: 86vh;
+  height: 85vh;
 }
 .about__text {
   flex: 1;
