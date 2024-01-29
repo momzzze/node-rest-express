@@ -20,7 +20,12 @@ const createBook = async (book) => {
 }
 
 const getAllBooks = async () => {
-    const allBooks = await Book.find({}).lean();
+    const allBooks = await Book.find({})
+    .populate({
+        path:'author',
+        select:'name birthDate imageUrl biography',
+    })
+    .lean();
     return allBooks;
 }
 
