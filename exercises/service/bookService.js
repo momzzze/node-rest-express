@@ -2,9 +2,9 @@ const Book = require('../models/Book');
 const Author = require('../models/Author');
 
 const createBook = async (book) => {
-    
+
     const findBook = await Book.findOne({ title: book.title });
-    const author=await Author.findOne({_id:book.author}); 
+    const author = await Author.findOne({ _id: book.author });
     try {
         if (findBook) {
             throw new Error('Book already exists');
@@ -21,15 +21,32 @@ const createBook = async (book) => {
 
 const getAllBooks = async () => {
     const allBooks = await Book.find({})
-    .populate({
-        path:'author',
-        select:'name birthDate imageUrl biography',
-    })
-    .lean();
+        .populate({
+            path: 'author',
+            select: 'name birthDate imageUrl biography',
+        })
+        .lean();
     return allBooks;
+}
+
+const getBookById = async (id) => {
+    const book=await Book.findById(id).populate({
+        path:'author',
+        select:'name birthDate imageUrl biography publishedBooks',
+        populate: {
+            path: 'publishedBooks',
+            select: 'title description imageUrl publishedDate',
+        },
+    }).populate({
+        path:'genre',
+        select:'name',    
+    }).lean();
+
+    return book;
 }
 
 module.exports = {
     createBook,
-    getAllBooks
+    getAllBooks,
+    getBookById,
 }

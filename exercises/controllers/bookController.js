@@ -15,10 +15,14 @@ router.get('/create', async (req, res) => {
 
     res.render('book/create', { genres, authors });
 });
-
 router.post('/create', async (req, res) => {
     await bookService.createBook(req.body);
     res.redirect('/');
+});
+
+router.get('/details/:bookId', async (req, res) => {
+    const book = await bookService.getBookById(req.params.bookId);
+    res.render('book/details', { ...book });
 });
 
 module.exports = router;

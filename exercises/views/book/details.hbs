@@ -1,0 +1,77 @@
+<div class="details__container">
+    <div class="button__navigation_container initial-animation">
+        <button class="go__back__button" onclick="goBack()">Go Back</button>
+        <button class="button_Edit" onclick="goBack()">Edit Book</button>
+        <button class="button__Delete" onclick="goBack()">Delete Book</button>
+    </div>
+
+    <div class="book__details">
+        <div class="book__details__left">
+            <img src="{{imageUrl}}" alt="Book Cover">
+        </div>
+        <div class="book__details__right">
+            <div class="book__details__right__title">{{title}}</div>
+            <div class="book__details__right__author">By {{author.name}}</div>
+            <div class="book__details__right__description">{{description}}</div>
+            <div class="book__details__right__genre">Genre: {{genre.name}}</div>
+            <div class="book__details__right__publishedDate">Published Date: {{publishedDate}}</div>
+        </div>
+
+    </div>
+
+
+    <h3 class="banner">Author&#39;s work</h3>
+    <div class="published-books-carousel owl-carousel">
+        {{#each author.publishedBooks}}
+        <div class="published-book-card">
+            <img src="{{this.imageUrl}}" alt="Book Cover">
+            <div class="published-book-details">
+                <div class="published-book-title">{{this.title}}</div>
+                <div class="published-book-description">{{this.description}}</div>
+                <div class="published-book-publishedDate">Published Date: {{this.publishedDate}}</div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+
+<script>
+
+    $(document).ready(function () {
+        $(".published-books-carousel").owlCarousel({
+            items: 3,
+            loop: true,
+            margin: 20,
+            nav: true,
+            dots: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    function goBack() {
+        window.history.back();        
+    }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const buttonContainer = document.querySelector('.button__navigation_container');
+
+        setTimeout(function () {
+            buttonContainer.classList.remove('initial-animation');
+        }, 1000);
+    });
+</script>
