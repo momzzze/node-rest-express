@@ -209,45 +209,74 @@ h1 {
   font-weight: bold;
 }
 
-.textarea-label{
-    margin: 1rem auto;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    background: none;
-    border: 2px solid #ff9c55;
-    color: white;
+.textarea-label {
+  margin: 1rem auto;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  background: none;
+  border: 2px solid #ff9c55;
+  color: white;
 }
-.textarea-label:focus{
-    outline: none;
-    border-color: #ff5555;
+.textarea-label:focus {
+  outline: none;
+  border-color: #ff5555;
 }
 
-.dropdown-menu{
-    background-color: var(--background);
-    color: white;
-    border: 2px solid #ff9c55;
-    border-radius: 10px;
-    width: 250px;
-    margin: 20px auto;
-    text-align: center;
-    padding: 14px 10px;
-    outline: none;
-    transition: 0.35s;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); /* Adjust minmax values as needed */
-    gap: 10px; /* Adjust the gap between items */
-    text-align: center;
-    align-items: center;    
+.dropdown-menu {
+  background-color: var(--background);
+  color: white;
+  border: 2px solid #ff9c55;
+  border-radius: 10px;
+  width: 250px;
+  margin: 20px auto;
+  text-align: center;
+  padding: 14px 10px;
+  outline: none;
+  transition: 0.35s;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(70px, 1fr)
+  ); /* Adjust minmax values as needed */
+  gap: 10px; /* Adjust the gap between items */
+  text-align: center;
+  align-items: center;
 }
-.dropdown-item{
-    display: flex;
-    flex-direction: column;
+.dropdown-item {
+  display: flex;
+  flex-direction: column;
 }
-.dropdown-element-position{
-    margin: 0 auto;
-    text-align: center;
-    font-weight: bold;    
-    color: #ff9c55;
-    margin-bottom: 10px;
+.dropdown-element-position {
+  margin: 0 auto;
+  text-align: center;
+  font-weight: bold;
+  color: #ff9c55;
+  margin-bottom: 10px;
+}
+
+.about__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.about__cover {
+  flex: 1;
+  max-width: 50%;
+  height: 86vh;
+}
+.about__text {
+  flex: 1;
+  max-width: 50%;
+  height: auto;
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
