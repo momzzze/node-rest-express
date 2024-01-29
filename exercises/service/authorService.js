@@ -16,6 +16,13 @@ const createAuthor = async (author) => {
     }
 }
 
+const getAllAuthors = async () => {
+    const allAuthors = await Author.find({}).lean();
+    return allAuthors;
+}
+
+
 module.exports = {
     createAuthor,
+    getAllAuthors
 }

@@ -1,0 +1,56 @@
+<h1>Add Book</h1>
+<div class="author__container">
+    <div class="box">
+        <div class="author-content">
+
+            <form action="/book/create" method="POST">
+
+                <div class="position-input-label">
+                    <label class="label" for="title">Title</label>
+                    <input class="text-input" type="text" name="title" id="title" placeholder="Enter Title...">
+                </div>
+
+                <div class="position-input-label">
+                    <label class="label" for="description">Description</label>
+                    <textarea class="textarea-label" name="description" id="biography" cols="30" rows="10"
+                        placeholder="Enter description..."></textarea>
+                </div>
+
+                <div class="position-input-label">
+                    <label class="label" for="imageUrl">Cover</label>
+                    <input class="text-input" type="text" name="imageUrl" id="imageUrl" placeholder="Add cover...">
+                </div>
+
+                <div class="position-input-label">
+                    <label class="label" for="publishedDate">Publication Date</label>
+                    <input class="text-input" type="date" name="publishedDate" id="publishedDate"
+                        placeholder="Enter Publication Date...">
+                </div>
+               
+                <div class="dropdown-element-position">
+                    <label for="writingGenre">Select Genre:</label>
+                    <select id="genre" name="genre">
+                        <option value="none" selected>--------</option>
+                        {{#each genres}}
+                        <option value="{{_id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="dropdown-element-position">
+                    <label for="writingGenre">Select Author:</label>
+                    <select id="author" name="author">
+                        <option value="none" selected>--------</option>
+                        {{#each authors}}
+                        <option value="{{_id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+
+                </div>
+
+                <div class="position-input-label">
+                    <input class="btn-submit" type="submit" value="Create">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
