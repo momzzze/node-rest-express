@@ -11,12 +11,19 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-    }
+    },
 });
 
 userSchema.pre('save', async function () {
     const hash = await bcrypt.hash(this.password, 12);
     this.password = hash;
 })
+userSchema.virtual('rePassword')
+    .set(function (value) {
+        if (value !== this.password) {
+            throw new mongoose.MongooseError('Password don\'t match')
+        }
+    });
+
 
 module.exports = mongoose.model('User', userSchema);
