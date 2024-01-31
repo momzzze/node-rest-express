@@ -1,24 +1,22 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        lowercase: true,        
-        // validate: {
-        //     validator: (value) => /^[A-Za-z0-9]+@[a-z]+\.[a-z]+$/.test(value),
-        //     message: 'Email should be valid'
-        // }
+        lowercase: true,
+
     },
     password: {
         type: String,
         required: true,
-        // minlength: [8, 'Password should be at least 8 characters long'],
-        // validate: {
-        //     validator: (value) => /^[A-Za-z0-9]+$/.test(value),
-        //     message: 'Password should consist only english letters and digits'
-        // }
     }
 });
+
+userSchema.pre('save', async function () {
+    const hash = await bcrypt.hash(this.password, 12);
+    this.password = hash;
+})
 
 module.exports = mongoose.model('User', userSchema);
