@@ -9,17 +9,13 @@
 <div class="pagination">
     <a class="first__last" href="/book/?page=1">First</a>
     {{#if isFirst}}
-
     {{else}}
     <a href="/book/?page={{prevPage}}">Previous</a>
     {{/if}}
-
+    <p class="pagination__pages">{{currentPage}} of {{totalPages}}</p>
     {{#if isLast}}
-
     {{else}}
     <a href="/book/?page={{nextPage}}">Next</a>
     {{/if}}
     <a class="first__last" href="/book/?page={{totalPages}}">Last</a>
 </div>
-
-<p class="pagination__pages">Page {{currentPage}} of {{totalPages}}</p>
