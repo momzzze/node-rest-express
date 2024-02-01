@@ -1,0 +1,35 @@
+<div class="auth_body">
+    <div class="registration-card">
+        <div class="banner">
+            <h2>Register</h2>
+        </div>
+        <form class="form-fields" action="/auth/register" method="POST">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="username" placeholder="Enter email">
+
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Enter password">
+
+            <label for="rePassword">Repeat Password</label>
+            <input type="password" name="rePassword" id="rePassword" placeholder="Repeat password">
+
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Enter username">
+
+            <label for="firstName">Name</label>
+            <input type="text" name="name" id="name" placeholder="Enter name">
+
+            <label for="imageUrl">Photo</label>
+            <input type="text" name="imageUrl" id="imageUrl" placeholder="Enter Image url">
+
+            <label for="info">Info</label>
+            <textarea type="textarea" name="info" id="info" placeholder="">
+            </textarea>
+
+            <button type="submit">Register</button>
+        </form>
+        <div class="login-link">
+            <p>Already have an account? <a href="/auth/login">Login</a></p>
+        </div>
+    </div>
+</div>
