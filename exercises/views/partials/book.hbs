@@ -1,15 +1,15 @@
 <div class="book__list">
     {{#each books}}
-        <div class="book-card">
-                <img  src="{{imageUrl}}" alt="Book Cover">
-                <div class="book-details">
-                    <div class="book-title">{{title}}</div>
-                    <div class="book-author">By {{author.name}}</div>
-                    <div class="book-description">{{description}}</div>
-                </div>
-                <div>
-                    <a class="btn_details" href="/book/details/{{_id}}" class="btn-details">Details</a>
-                </div>
-            </div> 
+    <div class="book-card">
+        <img src="{{imageUrl}}" alt="Book Cover">
+        <div class="book-details">
+            <div class="book-title">{{title}}</div>
+            <div class="book-author">By {{author.name}}</div>
+            <div class="book-description">{{description}}</div>
+        </div>
+        <div>
+            <a class="btn_details" href="/book/details/{{_id}}" class="btn-details">Details</a>
+        </div>
+    </div>
     {{/each}}
 </div>

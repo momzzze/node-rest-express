@@ -19,27 +19,34 @@ const createBook = async (book) => {
     }
 }
 
-const getAllBooks = async () => {
+const getAllBooks = async (skip, pageSize) => {
+    const totalBooks = await Book.countDocuments({});
+    const totalPages = Math.ceil(totalBooks / pageSize);
+
+
     const allBooks = await Book.find({})
         .populate({
             path: 'author',
             select: 'name birthDate imageUrl biography',
-        })
+        }).skip(skip).limit(pageSize)
         .lean();
-    return allBooks;
+    return {
+        books: allBooks,
+        totalPages,
+    };
 }
 
 const getBookById = async (id) => {
-    const book=await Book.findById(id).populate({
-        path:'author',
-        select:'name birthDate imageUrl biography publishedBooks',
+    const book = await Book.findById(id).populate({
+        path: 'author',
+        select: 'name birthDate imageUrl biography publishedBooks',
         populate: {
             path: 'publishedBooks',
             select: 'title description imageUrl publishedDate',
         },
     }).populate({
-        path:'genre',
-        select:'name',    
+        path: 'genre',
+        select: 'name',
     }).lean();
 
     return book;
