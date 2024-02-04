@@ -23,7 +23,8 @@ const login = async (userData) => {
         //payload
         const payload = {
             id: user._id,
-            email: user.email
+            email: user.email,
+            role: user.role
         }
         const token =await jwt.sign(payload, process.env.SECRET, { expiresIn: '1h' });
         return token;
