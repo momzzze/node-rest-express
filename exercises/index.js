@@ -3,9 +3,9 @@ const router = require('./routes');
 const handlebarsConfig = require('./config/handlebarsConfig');
 const mongoose = require('mongoose');
 const app = express();
+require('dotenv').config();
 
 handlebarsConfig(app);
-
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
