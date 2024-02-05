@@ -585,7 +585,6 @@ h1 {
 }
 .go__back__button:hover {
   cursor: pointer;  
-  width: 20%;
   background: var(--red);
 }
 .button_Edit{
@@ -599,7 +598,6 @@ h1 {
 }
 .button_Edit:hover {
   cursor: pointer;  
-  width: 20%;
   background: var(--red);
 }
 .button__Delete{
@@ -613,7 +611,6 @@ h1 {
 }
 .button__Delete:hover {
   cursor: pointer;
-  width: 20%;
   background: linear-gradient(22deg, #ff5555, #ff9c55);
 }
 
@@ -627,6 +624,7 @@ h1 {
 }
 .button__navigation_container{
   display: flex;
+  gap: 20px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -634,11 +632,7 @@ h1 {
   margin: 0 auto; 
   height:auto;
   margin-top: 2rem;
-  border: 1px solid #ff5555;
-  background: #ff9c55;
-  border-radius: 10px;
   overflow: hidden; 
-  border: 2px solid #ff5555; 
   transition: width 0.5s ease;
 }
 .initial-animation {

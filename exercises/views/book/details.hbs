@@ -1,8 +1,10 @@
 <div class="details__container">
     <div class="button__navigation_container initial-animation">
         <button class="go__back__button" onclick="goBack()">Go Back</button>
-        <button class="button_Edit" onclick="goBack()">Edit Book</button>
-        <button class="button__Delete" onclick="goBack()">Delete Book</button>
+        {{#if isAdmin}}
+            <button class="button_Edit" onclick="goBack()">Edit Book</button>
+            <button class="button__Delete" onclick="goBack()">Delete Book</button>
+        {{/if}}
     </div>
 
     <div class="book__details">
@@ -62,7 +64,7 @@
 
 <script>
     function goBack() {
-        window.history.back();        
+        window.history.back();
     }
 </script>
 

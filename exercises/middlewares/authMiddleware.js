@@ -12,6 +12,7 @@ const auth = async (req, res, next) => {
         req.user = decodedToken;
         req.isAdmin = decodedToken.role === 'admin';
         res.locals.isAuthenticated = true;
+        res.locals.isAdmin = req.isAdmin;
         next(); //LOGGED IN user
     } catch (error) {
         res.clearCookie('auth');
@@ -25,9 +26,16 @@ const isAuth = (req, res, next) => {
     }
     next();
 }
+const isAdmin=(req,res,next)=>{
+    if(!req.isAdmin){
+        res.redirect('/');
+    }
+    next();
+}
 
 
 module.exports = {
     auth,
-    isAuth
+    isAuth,
+    isAdmin
 }
