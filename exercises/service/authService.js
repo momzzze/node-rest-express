@@ -24,7 +24,8 @@ const login = async (userData) => {
         const payload = {
             id: user._id,
             email: user.email,
-            role: user.role
+            role: user.role,
+            avatar: user.imageUrl
         }
         const token =await jwt.sign(payload, process.env.SECRET, { expiresIn: '1h' });
         return token;

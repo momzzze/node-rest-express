@@ -13,6 +13,7 @@ const auth = async (req, res, next) => {
         req.isAdmin = decodedToken.role === 'admin';
         res.locals.isAuthenticated = true;
         res.locals.isAdmin = req.isAdmin;
+        res.locals.user = decodedToken;
         next(); //LOGGED IN user
     } catch (error) {
         res.clearCookie('auth');

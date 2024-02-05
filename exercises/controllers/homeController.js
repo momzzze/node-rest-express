@@ -2,9 +2,7 @@ const router = require('express').Router();
 
 router.get('/',(req,res)=>{
     const isAuthenticated=!!req.user;
-    console.log(req.user);
-    console.log(req.isAdmin);
-    console.log(isAuthenticated);
+    console.log(res.locals);
     res.render('home');
 });
 

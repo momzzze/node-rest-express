@@ -677,3 +677,28 @@ h1 {
     max-width: none; /* Remove max-width for small devices */
   }
 }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 10;
+}
+.avatar{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.dropdown__hover{
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+.dropdown__menu{
+  position: absolute;
+  display: none;
+  top: 100%;
+  left: 0;
+}
