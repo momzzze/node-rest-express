@@ -24,20 +24,19 @@
             <h1><a href="/" class="link">Exercise about books</a></h1>
             <ul>
                 <li><a href="/book" class="link">Books</a></li>
-                <li><a href="/book/create" class="link">Add Books</a></li>
-
-                {{!-- Genre creation will be fixed when we add admin section --}}
-                <li><a href="/genre/create" class="link">Create Genres</a></li>
-
-                {{!-- Author creation will be fixed when we add admin section --}}
-                <li><a href="/author/create" class="link">Create Author</a></li>
-
                 <li><a href="/authors" class="link">Authors</a></li>
                 <li><a href="/about" class="link">About</a></li>
-
+                {{#if isAuthenticated}}
+                <li><a href="/book/create" class="link">Add Books</a></li>
+                {{!-- Genre creation will be fixed when we add admin section --}}
+                <li><a href="/genre/create" class="link">Create Genres</a></li>
+                {{!-- Author creation will be fixed when we add admin section --}}
+                <li><a href="/author/create" class="link">Create Author</a></li>
+                <li><a href="/auth/logout" class="link">Logout</a></li>
+                {{else}}
                 <li><a href="/auth/login" class="link">Login</a></li>
-                 <li><a href="/auth/register" class="link">Register</a></li>
-                 <li><a href="/auth/logout" class="link">Logout</a></li>
+                <li><a href="/auth/register" class="link">Register</a></li>
+                {{/if}}
 
             </ul>
         </header>

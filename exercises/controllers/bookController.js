@@ -13,6 +13,7 @@ router.get('/', async (req, res) => {
     const nextPage = Math.min(page + 1, books.totalPages);
     const isFirst = page == 1;
     const isLast = page == books.totalPages;
+    console.log(res.locals.isAuthenticated);
     res.render('book/all', {
         books: books.books, currentPage: page, limit: skip, totalPages: books.totalPages, prevPage,
         nextPage,isFirst,isLast
