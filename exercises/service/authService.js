@@ -36,5 +36,5 @@ const login = async (userData) => {
 
 module.exports = {
     register,
-    login
+    login,
 }
