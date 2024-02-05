@@ -581,7 +581,9 @@ h1 {
   color: #fff;
   border-radius: 10px;
   top: 55%;
-  left:53%
+  left:53%;
+  width: 20%;
+  text-align: center;
 }
 .go__back__button:hover {
   cursor: pointer;  
@@ -594,7 +596,10 @@ h1 {
   color: #fff;
   border-radius: 10px;
   top: 55%;
-  left:53%
+  left: 53%;
+  text-decoration: none;
+  width: 20%;
+  text-align: center;
 }
 .button_Edit:hover {
   cursor: pointer;  
@@ -607,7 +612,9 @@ h1 {
   color: #fff;
   border-radius: 10px;
   top: 55%;
-  left:53%
+  left:53%;
+  width: 20%;
+  text-align: center;
 }
 .button__Delete:hover {
   cursor: pointer;

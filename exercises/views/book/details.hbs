@@ -1,9 +1,9 @@
 <div class="details__container">
     <div class="button__navigation_container initial-animation">
-        <button class="go__back__button" onclick="goBack()">Go Back</button>
+        <a class="go__back__button" onclick="goBack()">Go Back</a>
         {{#if isAdmin}}
-            <button class="button_Edit" onclick="goBack()">Edit Book</button>
-            <button class="button__Delete" onclick="goBack()">Delete Book</button>
+            <a class="button_Edit" href="/book/edit/{{_id}}">Edit Book</a>
+            <a class="button__Delete" onclick="goBack()">Delete Book</a>
         {{/if}}
     </div>
 

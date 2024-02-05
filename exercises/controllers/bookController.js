@@ -16,10 +16,9 @@ router.get('/', async (req, res) => {
     console.log(res.locals.isAuthenticated);
     res.render('book/all', {
         books: books.books, currentPage: page, limit: skip, totalPages: books.totalPages, prevPage,
-        nextPage,isFirst,isLast
+        nextPage, isFirst, isLast
     });
 })
-// { pagination: { page: currentPage, limit:PageLimit,totalRows: TotalNoOfROWS, queryParams: object }};
 router.get('/create', async (req, res) => {
     const genres = await genreService.getAllGenres();
     const authors = await authorService.getAllAuthors();
@@ -30,10 +29,20 @@ router.post('/create', async (req, res) => {
     await bookService.createBook(req.body);
     res.redirect('/');
 });
-
 router.get('/details/:bookId', async (req, res) => {
     const book = await bookService.getBookById(req.params.bookId);
     res.render('book/details', { ...book });
 });
 
+router.get('/edit/:bookId', async (req, res) => {
+    const book = await bookService.getBookById(req.params.bookId);
+    console.log(book);
+    res.render('book/edit', { book });
+});
+router.post('/edit/:bookId', async (req, res) => {
+    const book = await bookService.getBookById(req.params.bookId);
+    const editedBook = { ...book, ...req.body };
+    await bookService.updateBook(editedBook._id,editedBook);
+    res.redirect('/book');
+});
 module.exports = router;

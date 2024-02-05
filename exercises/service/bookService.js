@@ -52,8 +52,13 @@ const getBookById = async (id) => {
     return book;
 }
 
+const updateBook = async (id, book) => {
+    await Book.findByIdAndUpdate(id, book)
+}
+
 module.exports = {
     createBook,
     getAllBooks,
     getBookById,
+    updateBook
 }

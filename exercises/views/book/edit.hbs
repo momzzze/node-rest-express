@@ -1,0 +1,30 @@
+<h1>Edit Book</h1>
+<div class="author__container">
+    <div class="box">
+        <div class="author-content">
+
+            <form method="POST">
+
+                <div class="position-input-label">
+                    <label class="label" for="title">Title</label>
+                    <input class="text-input" type="text" name="title" id="title" value="{{book.title}}">
+                </div>
+
+                <div class="position-input-label">
+                    <label class="label" for="description">Description</label>
+                    <textarea class="textarea-label" name="description" id="biography" cols="30"
+                        rows="10"> {{book.description}}</textarea>
+                </div>
+
+                <div class="position-input-label">
+                    <label class="label" for="imageUrl">Cover</label>
+                    <input class="text-input" type="text" name="imageUrl" id="imageUrl" value="{{book.imageUrl}}">
+                </div>
+                   
+                <div class="position-input-label">
+                    <input class="btn-submit" type="submit" value="Edit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

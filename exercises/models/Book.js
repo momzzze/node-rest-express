@@ -10,6 +10,7 @@ const bookSchema = new mongoose.Schema({
         type: String,
         required: true,
         min: 10,
+        trim: true,
     },
     imageUrl: {
         type: String,
