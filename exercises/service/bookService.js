@@ -55,10 +55,14 @@ const getBookById = async (id) => {
 const updateBook = async (id, book) => {
     await Book.findByIdAndUpdate(id, book)
 }
+const deleteBook = async (id) => {
+    await Book.findByIdAndDelete(id);
+}
 
 module.exports = {
     createBook,
     getAllBooks,
     getBookById,
-    updateBook
+    updateBook,
+    deleteBook
 }

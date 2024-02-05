@@ -3,7 +3,7 @@
         <a class="go__back__button" onclick="goBack()">Go Back</a>
         {{#if isAdmin}}
             <a class="button_Edit" href="/book/edit/{{_id}}">Edit Book</a>
-            <a class="button__Delete" onclick="goBack()">Delete Book</a>
+            <a class="button__Delete" href="/book/delete/{{_id}}">Delete Book</a>
         {{/if}}
     </div>
 

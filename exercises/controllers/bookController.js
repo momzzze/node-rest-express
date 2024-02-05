@@ -45,4 +45,11 @@ router.post('/edit/:bookId', async (req, res) => {
     await bookService.updateBook(editedBook._id,editedBook);
     res.redirect('/book');
 });
+
+router.get('/delete/:bookId',async(req,res)=>{
+    console.log(req.params.bookId);
+    await bookService.deleteBook(req.params.bookId);
+    res.redirect('/book');
+})
+
 module.exports = router;
