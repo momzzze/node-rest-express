@@ -23,4 +23,6 @@
    6. add partials folder in views folder.
 6. Connect with the db
    1. install mongoose
+   2. Setup db connection
+   3. Add user model
 7.   
