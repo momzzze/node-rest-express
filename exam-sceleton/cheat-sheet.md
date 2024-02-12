@@ -59,3 +59,11 @@
          3. verify token
          4. use middleware
          5. add isAuth to views
+      8. Error Handling
+         1. Add notifications
+         2. Add error utils getErrorMessage
+         3. Add register error handling
+         4. Add login error handling
+      9.  Last fixes
+         1. Dynamic Navigation
+         2. 

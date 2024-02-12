@@ -9,7 +9,7 @@ const register = async (userData) => {
     }
     const user = await User.findOne({ email: userData.email })
     if (user) {
-        throw new Error('Email is already taken');
+        throw new Error('User already exists');
     }
 
     const createdUser = await User.create(userData);
@@ -19,11 +19,11 @@ const register = async (userData) => {
 const login = async ({ email, password }) => {
     const user = await User.findOne({ email });
     if (!user) {
-        throw { message: 'Invalid Credentials' };
+        throw new Error('Invalid Credentials');
     }
     const isValid = await bcrypt.compare(password, user.password);
     if (!isValid) {
-        throw { message: 'Invalid Credentials' };
+        throw new Error('Invalid Credentials');
     }
     const token = await generateToken(user);
     return token;
@@ -35,6 +35,7 @@ const generateToken = async (user) => {
         username: user.username,
         email: user.email
     }
+    
     return jwt.sign(payload, SECRET, { expiresIn: '2h' });
 
 }
