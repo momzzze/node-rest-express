@@ -1,8 +1,15 @@
-const router=require('express').Router();
+const router = require('express').Router();
+const courseService = require('../service/courseService');
+const userService = require('../service/userService');
 
-router.get('/',(req,res)=>{
-    console.log(req.user);
-    res.render('home');
+router.get('/', async (req, res) => {
+    const latest3Courses = await courseService.getLatest3().lean();
+    res.render('home', { latest3Courses });
 });
-
-module.exports=router;
+router.get('/profile', async (req, res) => {
+    const user = await userService.getInfo(req.user._id);
+    // const createdCourses = user.createdCourses;
+    // const signedCourses = user.signedCourses;
+    res.render('profile', user);
+});
+module.exports = router;

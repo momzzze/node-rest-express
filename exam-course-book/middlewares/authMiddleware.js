@@ -28,8 +28,17 @@ const isAuth = (req, res, next) => {
     next();
 }
 
+const isGuest = (req, res, next) => {
+    if (req.user) {
+        return res.redirect('/');
+    }
+
+    next();
+}
+
 
 module.exports = {
     authMiddleware,
-    isAuth
+    isAuth,
+    isGuest
 };
