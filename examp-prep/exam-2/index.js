@@ -20,10 +20,10 @@ app.set('view engine', 'hbs');
 
 app.use(routers)
 
-mongoose.connect('mongodb://localhost:27017/course-book')
+mongoose.connect('mongodb://localhost:27017/wizard-creatures')
 mongoose.connection.on('connected', () => console.log('DB is connected'));
 mongoose.connection.on('error', (err) => console.log(err));
 
-app.listen(5001, () => {
+app.listen(5000, () => {
     console.log('Server is running on port 5000');
 });
