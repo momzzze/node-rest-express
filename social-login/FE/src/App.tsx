@@ -1,37 +1,29 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import Header from "./header";
 import Footer from "./footer";
+import { Outlet } from "react-router-dom";
+import AuthModal from "./components/auth";
 
 function App() {
+  const [showAuth, setShowAuth] = useState(false);
+  const [authType, setAuthType] = useState<string | null>(null);
+
+  const handleOnAuthClick = (type: string) => {
+    setAuthType(type); // "login" или "register"
+  };
+  console.log("authType:", authType);
+
   return (
     <>
-      <Header />
+      <Header onAuthClick={handleOnAuthClick} />
       <main>
-        <div className="app">
-          <h1>
-            <img src={reactLogo} alt="React Logo" />
-            <img src={viteLogo} alt="Vite Logo" />
-            Hello Vite + React!
-          </h1>
-          <p>
-            Edit <code>App.tsx</code> and save to test HMR updates.
-          </p>
-          <p>
-            <button
-              className="link"
-              onClick={() => {
-                window.open("https://vitejs.dev/guide/features.html", "_blank");
-              }}
-            >
-              Vite Documentation
-            </button>
-          </p>
-        </div>
+        <Outlet />
       </main>
       <Footer />
+      {authType && (
+        <AuthModal type={authType} onClose={() => setAuthType(false)} />
+      )}
     </>
   );
 }

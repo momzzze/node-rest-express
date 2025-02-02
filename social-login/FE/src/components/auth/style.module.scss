@@ -1,0 +1,104 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalContent {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.closeContainer {
+    display: flex;
+    justify-content: flex-end;
+    /* Позиционира бутона вдясно */
+}
+
+.close {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #333;
+}
+
+.close:hover {
+    color: red;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.primaryButton {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.primaryButton:hover {
+    background: #555;
+}
+
+.fbButton {
+    background: #1877F2;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    font-weight: bold;
+}
+
+.fbButton:hover {
+    background: #145dbf;
+}
+
+.divider {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.switch {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.switch span {
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.switch span:hover {
+    text-decoration: underline;
+}

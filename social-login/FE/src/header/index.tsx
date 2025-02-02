@@ -1,5 +1,9 @@
 import style from "./style.module.scss";
-const Header = () => {
+const Header = ({
+  onAuthClick,
+}: {
+  onAuthClick: (isLogin: string) => void;
+}) => {
   return (
     <header className={style.header}>
       <div className={style.wrapper}>
@@ -13,10 +17,10 @@ const Header = () => {
         <div className={style.nav}>
           <ul>
             <li>
-              <a href="#">Login</a>
+              <button onClick={() => onAuthClick("login")}>Login</button>
             </li>
             <li>
-              <a href="#">Register</a>
+              <button onClick={() => onAuthClick("register")}>Register</button>
             </li>
           </ul>
         </div>

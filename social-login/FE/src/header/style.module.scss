@@ -67,3 +67,14 @@
     text-decoration: none;
     padding: 8px 12px;
 }
+
+button {
+    background: transparent;
+    color: white;
+    border: none;
+}
+
+button:hover {
+    color: rgb(231, 239, 245);
+    border: none;
+}
