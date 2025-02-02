@@ -52,3 +52,6 @@ function sendEmail(email, movies) {
     }, 4000);
   });
 }
+
+
+

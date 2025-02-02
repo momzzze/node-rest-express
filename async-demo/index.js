@@ -58,3 +58,20 @@ async function displayCommits() {
 displayCommits();
 
 console.log('after');
+
+
+
+
+function countDown(time) {
+    let intervalId = setInterval(() => {
+        time--;
+        if (time > 0) {
+            console.log(time);
+        } else {
+            console.log('Ring Ring Ring!!!');
+            clearInterval(intervalId);
+        }
+    }, 1000);
+}
+
+countDown(5);
