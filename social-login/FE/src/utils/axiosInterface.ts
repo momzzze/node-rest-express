@@ -1,7 +1,7 @@
 import axios from "axios";
 import { store } from "../store";
-import { logout } from "../store/auth";
-import { refreshAccessToken } from "../store/auth/action";
+import { logout } from "../store/auth/authSlice";
+import { refreshAccessToken } from "../store/auth/actions";
 
 const baseURL = import.meta.env.VITE_BACKEND_URL as string;
 

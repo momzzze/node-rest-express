@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser, registerUser } from "../../store/auth/action";
-import { RootState, AppDispatch } from "../../store";
+import { RootState } from "../../store"; // ✅ Import Redux types
+import { AppDispatch } from "../../store"; // ✅ Ensure correct import
+import { loginUser, registerUser } from "../../store/auth/actions"; // ✅ Import actions correctly
 import styles from "./style.module.scss";
 
 const AuthModal = ({
@@ -27,12 +28,16 @@ const AuthModal = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    let result;
     if (type === "login") {
-      dispatch(
+      result = await dispatch(
         loginUser({ identifier: formData.email, password: formData.password })
-      );
+      ).unwrap();
     } else {
-      dispatch(registerUser(formData));
+      result = await dispatch(registerUser(formData)).unwrap();
+    }
+    if (result && result.accessToken) {
+      onClose();
     }
   };
 

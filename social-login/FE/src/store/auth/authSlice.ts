@@ -1,14 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AuthState, User } from "./interface";
-import { loginUser, registerUser } from "./action";
+
+// 🚨 DO NOT IMPORT `loginUser`, `registerUser`, `refreshAccessToken` HERE!
 
 const initialState: AuthState = {
-    user: null,
-    accessToken: null,
-    refreshToken: null,
-    isAuthenticated: false,
+    user: JSON.parse(localStorage.getItem("user") || "null"),
+    accessToken: localStorage.getItem("accessToken") || null,
+    refreshToken: localStorage.getItem("refreshToken") || null,
+    isAuthenticated: !!localStorage.getItem("accessToken"),
     loading: false,
-    error: null,
+    error: null
 };
 
 const authSlice = createSlice({
@@ -22,39 +23,40 @@ const authSlice = createSlice({
             state.isAuthenticated = false;
             state.loading = false;
             state.error = null;
-
+            localStorage.removeItem("user");
             localStorage.removeItem("accessToken");
             localStorage.removeItem("refreshToken");
         }
     },
     extraReducers: (builder) => {
         builder
-            .addCase(loginUser.fulfilled, (state, action: PayloadAction<{ user: User; accessToken: string; refreshToken: string }>) => {
-                console.log("🔹 Login Fulfilled Payload:", action.payload); // ✅ Debug Redux payload
-
+            .addCase("auth/login/fulfilled", (state, action: PayloadAction<{ user: User; accessToken: string; refreshToken: string }>) => {
                 state.loading = false;
                 state.user = action.payload.user;
                 state.accessToken = action.payload.accessToken;
                 state.refreshToken = action.payload.refreshToken;
                 state.isAuthenticated = true;
 
+                localStorage.setItem("user", JSON.stringify(action.payload.user));
                 localStorage.setItem("accessToken", action.payload.accessToken);
                 localStorage.setItem("refreshToken", action.payload.refreshToken);
             })
-            .addCase(registerUser.fulfilled, (state, action: PayloadAction<{ user: User; accessToken: string; refreshToken: string }>) => {
-                console.log("🔹 Register Fulfilled Payload:", action.payload); // ✅ Debug Redux payload
-
+            .addCase("auth/register/fulfilled", (state, action: PayloadAction<{ user: User; accessToken: string; refreshToken: string }>) => {
                 state.loading = false;
                 state.user = action.payload.user;
                 state.accessToken = action.payload.accessToken;
                 state.refreshToken = action.payload.refreshToken;
                 state.isAuthenticated = true;
 
+                localStorage.setItem("user", JSON.stringify(action.payload.user));
                 localStorage.setItem("accessToken", action.payload.accessToken);
                 localStorage.setItem("refreshToken", action.payload.refreshToken);
+            })
+            .addCase("auth/refresh/fulfilled", (state, action: PayloadAction<{ accessToken: string }>) => {
+                state.accessToken = action.payload.accessToken;
+                localStorage.setItem("accessToken", action.payload.accessToken);
             });
     }
-
 });
 
 export const { logout } = authSlice.actions;
