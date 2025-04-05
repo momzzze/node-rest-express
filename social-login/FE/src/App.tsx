@@ -4,16 +4,15 @@ import Header from "./header";
 import Footer from "./footer";
 import { Outlet } from "react-router-dom";
 import AuthModal from "./components/auth";
+import useFacebookSDK from "./hooks/useFacebookSDK";
 
 function App() {
-  const [showAuth, setShowAuth] = useState(false);
+  useFacebookSDK();
   const [authType, setAuthType] = useState<string | null>(null);
 
   const handleOnAuthClick = (type: string) => {
     setAuthType(type); // "login" или "register"
   };
-  console.log("authType:", authType);
-
   return (
     <>
       <Header onAuthClick={handleOnAuthClick} />
