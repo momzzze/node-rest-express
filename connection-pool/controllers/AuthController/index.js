@@ -3,6 +3,9 @@ const {
   hashPassword,
   generateToken,
   comparePassword,
+  findUserByEmailOrUsername,
+  userExists,
+  createUser,
 } = require('../../services/AuthService');
 
 const loginUser = async (req, res) => {
@@ -15,30 +18,15 @@ const loginUser = async (req, res) => {
   }
 
   try {
-    const user = await prisma.user.findFirst({
-      where: {
-        OR: [{ email: email }, { username: email }],
-      },
-    });
-    if (!user) {
+    const user = await findUserByEmailOrUsername(email);
+    if (!user || !(await comparePassword(password, user.password))) {
       return res.status(401).json({
         message: 'Unauthorized',
         error: 'Invalid credentials',
       });
     }
-    const isValid = await comparePassword(password, user.password);
-    if (!isValid) {
-      return res.status(401).json({
-        message: 'Unauthorized',
-        error: 'Invalid credentials',
-      });
-    }
-
     const token = generateToken(user);
-    res.status(200).json({
-      message: 'Login successful',
-      token,
-    });
+    res.status(200).json({ message: 'Login successful', token });
   } catch (error) {
     return res.status(500).json({
       message: 'Internal server error',
@@ -55,27 +43,15 @@ const registerUser = async (req, res) => {
     });
   }
   try {
-    const existingUser = await prisma.user.findUnique({ where: { email } });
-
-    if (existingUser) {
-      return res.status(409).json({
-        message: 'Conflict',
-        error: 'User already exists',
-      });
+    const exists = await userExists(email);
+    if (exists) {
+      res
+        .status(409)
+        .json({ message: 'Conflict', error: 'User already exists' });
     }
-    const hashed = await hashPassword(password);
-    const newUser = await prisma.user.create({
-      data: {
-        email,
-        password: hashed,
-        username,
-      },
-    });
-    const token = generateToken(newUser);
-    res.status(201).json({
-      message: 'User created successfully',
-      token,
-    });
+    const user = await createUser({ email, password, username });
+    const token = generateToken(user);
+    res.status(201).json({ message: 'User created successfully', token });
   } catch (error) {
     return res.status(500).json({
       message: 'Internal server error',

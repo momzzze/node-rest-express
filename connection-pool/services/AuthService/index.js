@@ -10,8 +10,35 @@ const generateToken = (user) => {
   });
 };
 
+const findUserByEmailOrUsername = async (identifier) => {
+  const user = await prisma.user.findFirst({
+    where: {
+      OR: [{ email: identifier }, { username: identifier }],
+    },
+  });
+  return user;
+};
+
+const userExists = async (email) => {
+  return await prisma.user.findUnique({ where: { email } });
+};
+
+const createUser = async ({ email, username, password }) => {
+  const hashed = await bcrypt.hash(password, 12);
+  return await prisma.user.create({
+    data: {
+      email,
+      username,
+      password: hashed,
+    },
+  });
+};
+
 module.exports = {
   hashPassword,
   comparePassword,
   generateToken,
+  findUserByEmailOrUsername,
+  userExists,
+  createUser,
 };
