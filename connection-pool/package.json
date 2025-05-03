@@ -2,9 +2,9 @@
   "name": "connection-pool",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,8 @@
   "dependencies": {
     "body-parser": "^2.2.0",
     "dot-env": "^0.0.1",
-    "express": "^5.1.0"
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "pg": "^8.15.6"
   }
 }
