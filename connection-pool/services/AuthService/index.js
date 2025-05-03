@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const prisma = require('../../db/prisma');
 
 const hashPassword = async (plain) => bcrypt.hash(plain, 12);
 const comparePassword = async (plain, hash) => bcrypt.compare(plain, hash);
