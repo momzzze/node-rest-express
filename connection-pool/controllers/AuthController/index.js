@@ -44,7 +44,7 @@ const registerUser = async (req, res) => {
   try {
     const exists = await userExists(email);
     if (exists) {
-      res
+      return res
         .status(409)
         .json({ message: 'Conflict', error: 'User already exists' });
     }
