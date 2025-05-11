@@ -33,6 +33,7 @@ const loginUser = async (req, res) => {
     });
   }
 };
+
 const registerUser = async (req, res) => {
   const { email, password, username } = req.body;
   if (!email || !password || !username) {
