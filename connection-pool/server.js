@@ -24,7 +24,7 @@ app.use('/api/v1', routes);
 
 // Call connectToDB
 connectToDB().then(() => {
-  app.listen(PORT, () => {
+  app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Server is running on port ${PORT}`);
   });
 });
