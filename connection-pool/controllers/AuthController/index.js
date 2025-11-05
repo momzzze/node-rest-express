@@ -36,6 +36,9 @@ const loginUser = async (req, res) => {
 
 const registerUser = async (req, res) => {
   const { email, password, username } = req.body;
+  console.log('====================================');
+  console.log('Registering user:', req.body);
+  console.log('====================================');
   if (!email || !password || !username) {
     return res.status(400).json({
       message: 'Bad request',
